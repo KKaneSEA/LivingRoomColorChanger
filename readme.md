@@ -1,3 +1,7 @@
+# Test this application on vercel:
+
+[Living Room Color Changer](https://livingroomcolorchanger.vercel.app/)
+
 ## Setup
 
 Download [Node.js](https://nodejs.org/en/download/).
