@@ -1,6 +1,9 @@
-# Test this application on vercel:
+# Living Room Color Changer <br>
 
-[Living Room Color Changer](https://livingroomcolorchanger.vercel.app/)
+Living Room Color Changer is a WebGL website that lets users change the color of 3D furniture  
+| Where to view this app? |
+| --------- |
+| Vercel: [Living Room Color Changer](https://livingroomcolorchanger.vercel.app/) <br>Vimeo: [Sample Video on Vimeo ](vimeo.com/user3458729/)</br> |
 
 ## Setup
 

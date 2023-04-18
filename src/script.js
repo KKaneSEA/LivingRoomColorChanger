@@ -68,8 +68,25 @@ const rugMaterial = new THREE.MeshPhysicalMaterial({
 const dracoLoader = new DRACOLoader();
 dracoLoader.setDecoderPath("draco/");
 
+//Loading Manager
+
+const progressBar = document.getElementById("progress-bar");
+
+const loadingManager = new THREE.LoadingManager();
+loadingManager.onProgress = function (url, loaded, total) {
+  console.log(`start: ${url}`);
+  progressBar.value = (loaded / total) * 100;
+};
+
+const progressBarContainer = document.querySelector(".progress-bar-container");
+
+loadingManager.onLoad = function () {
+  console.log(`just finished`);
+  progressBarContainer.style.display = "none";
+};
+
 // GLTF loader
-const gltfLoader = new GLTFLoader();
+const gltfLoader = new GLTFLoader(loadingManager);
 gltfLoader.setDRACOLoader(dracoLoader);
 
 gltfLoader.load("colorchangerroom2.glb", (gltf) => {
