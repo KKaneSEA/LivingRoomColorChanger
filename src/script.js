@@ -18,6 +18,9 @@ const ambientLight = new THREE.AmbientLight(0xf5dfb7, 1.2);
 scene.add(ambientLight);
 const directionalLight = new THREE.DirectionalLight(0xffffff, 0.2);
 scene.add(directionalLight);
+directionalLight.castShadow = true;
+console.log(directionalLight.shadow);
+// ambientLight.castShadow = true;
 
 //Color Changer
 const gui = new dat.GUI();
@@ -213,6 +216,8 @@ scene.add(camera);
 // Controls
 const controls = new OrbitControls(camera, canvas);
 controls.enableDamping = true;
+controls.minDistance = 0;
+controls.maxDistance = 3.9;
 
 /**
  * Renderer
