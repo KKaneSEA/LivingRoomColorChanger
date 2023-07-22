@@ -20,10 +20,9 @@ const directionalLight = new THREE.DirectionalLight(0xffffff, 0.2);
 scene.add(directionalLight);
 directionalLight.castShadow = true;
 console.log(directionalLight.shadow);
-// ambientLight.castShadow = true;
 
 //Color Changer
-const gui = new dat.GUI();
+const gui = new dat.GUI({ width: 300 });
 const parameters = {
   rug: 0xb3b3b3,
   couch: 0xd7c974,
@@ -31,7 +30,7 @@ const parameters = {
   pillows: 0xf0912d,
 };
 
-//textures
+//Textures
 const textureLoader = new THREE.TextureLoader();
 
 const decorativeTexture = textureLoader.load("/textures/texture22.jpg");
@@ -58,7 +57,7 @@ const cushionMaterial = new THREE.MeshPhysicalMaterial({
   normalMap: cushionNormal,
 });
 
-//textureRug
+//Texture Rug
 const rugTexture = textureLoader.load("/textures/fabric.jpg");
 const rugNormal = textureLoader.load("/textures/texturenormal.jpg");
 const rugMaterial = new THREE.MeshPhysicalMaterial({
@@ -72,7 +71,6 @@ const dracoLoader = new DRACOLoader();
 dracoLoader.setDecoderPath("draco/");
 
 //Loading Manager
-
 const progressBar = document.getElementById("progress-bar");
 
 const loadingManager = new THREE.LoadingManager();
@@ -97,16 +95,12 @@ gltfLoader.load("colorchangerroom2.glb", (gltf) => {
   gltf.scene.position.x = 6.0;
   gltf.scene.position.z = 0.1;
   scene.add(gltf.scene);
-  console.log(gltf.scene);
-
-  console.log("loaded");
 
   const rug = gltf.scene.children.find((child) => child.name === "Plane006");
   rug.material = rugMaterial;
 
-  //empty objects
+  //Empty Objects
   const empty = gltf.scene.children.find((child) => child.name === "Empty");
-  console.log(empty);
 
   const couchBase1 = empty.children.find((child) => child.name === "Cube001");
   couchBase1.material = couchMaterial;
@@ -175,6 +169,8 @@ gui.addColor(parameters, "cushions").onChange(() => {
 gui.addColor(parameters, "pillows").onChange(() => {
   decorativeMaterial.color.set(parameters.pillows);
 });
+
+// gui.closed = true;
 
 /**
  * Sizes
